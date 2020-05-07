@@ -75,6 +75,35 @@ public class RasterImage {
 	
 	public void binarize(int threshold) {
 		// TODO: binarize the image with given threshold
+		
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int pos = y * width + x;
+				int rgb = argb[pos];
+				
+				int r = (rgb >> 16) & 0xff;
+				int g = (rgb >>  8) & 0xff;
+				int b =  rgb        & 0xff;
+				
+				int durchschnitt = (r + g + b) / 3;
+				
+				int r_new = 0, g_new = 0, b_new = 0;
+				
+				if (durchschnitt < threshold) 
+				{
+					r_new = 0;
+					g_new = 0;
+					b_new = 0;
+				} else {
+					r_new = 255;
+					g_new = 255;
+					b_new = 255;
+				}
+				
+				argb[pos] = (0xFF<<24) | (r_new<<16) | (g_new<<8) | b_new;
+			}
+		}
+		
 	}
 	
 	public void invert() {
