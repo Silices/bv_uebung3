@@ -20,7 +20,19 @@ public class MorphologicFilter {
 	// filter implementations go here:
 	
 	public void copy(RasterImage src, RasterImage dst) {
-		// TODO: just copy the image
+		int height = src.height;
+		int width = src.width;
+		int[] argbS = src.argb;
+		int[] argbD = dst.argb;
+		
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				
+				int pos = y * width + x;
+						
+				argbD[pos] = argbS[pos];
+			}
+		}
 	}
 	
 	public void dilation(RasterImage src, RasterImage dst, double radius) {
