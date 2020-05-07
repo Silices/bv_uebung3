@@ -37,6 +37,7 @@ public class MorphologicFilter {
 	
 	public void dilation(RasterImage src, RasterImage dst, double radius) {
 		// TODO: dilate the image using a structure element that is a neighborhood with the given radius
+		//test
 	}
 	
 	public void erosion(RasterImage src, RasterImage dst, double radius) {
